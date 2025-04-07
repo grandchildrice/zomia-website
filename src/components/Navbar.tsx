@@ -108,7 +108,7 @@ const Navbar = ({ locale }: NavbarProps) => {
         </div>
 
         {/* モバイルメニュー */}
-        <div className={`md:hidden retro-terminal mt-4 transition-all duration-300 ${isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+        <div className={`md:hidden retro-terminal mt-4 transition-all duration-300 ${isMenuOpen ? 'opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
           <div className="p-4 space-y-4">
             {navLinks.map((link) => (
               <div key={link.href}>

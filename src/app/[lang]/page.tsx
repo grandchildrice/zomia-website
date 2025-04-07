@@ -194,37 +194,11 @@ export default async function HomePage({ params: { lang } }: { params: Params })
                     </h2>
 
                     <div className="max-w-4xl mx-auto space-y-8">
-                        {newsItems.map((item) => (
-                            <Link
-                                key={item.id}
-                                href={`/${lang}/news/${item.id}`}
-                                className="block"
-                            >
-                                <div className="magic-card-enhanced hover:translate-x-1 transition-transform duration-300">
-                                    <div className="text-sm font-mono text-accent mb-2 cryptic-text">
-                                        {formatDate(item.date)}
-                                    </div>
-                                    <h3 className="text-xl md:text-2xl font-display mb-3 hologram">
-                                        {item.title}
-                                    </h3>
-                                    <p className="opacity-80">
-                                        {item.excerpt}
-                                    </p>
-                                    <div className="mt-4 text-sm text-accent magic-text">
-                                        {lang === 'ja' ? '続きを読む →' : 'Read more →'}
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-
-                    <div className="text-center mt-12">
-                        <Link
-                            href={`/${lang}/news`}
-                            className="magic-button-enhanced"
-                        >
-                            {t.news.viewAll}
-                        </Link>
+                        <News
+                            locale={lang as Locale}
+                            showHeader={false}
+                            limit={3}
+                        />
                     </div>
                 </div>
             </section>
