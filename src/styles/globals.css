@@ -1,0 +1,1152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-dark: #0a0a1a;
+  --primary-light: #1a1a2e;
+  --accent: #ff79c6;
+  --accent-secondary: #64ffda;
+  --text: #f8f8f2;
+  --retro: #50fa7b;
+  --magic: #bd93f9;
+  --danger: #ff5555;
+}
+
+body {
+  background-color: var(--primary-dark);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(189, 147, 249, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(80, 250, 123, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(255, 121, 198, 0.05) 0%, transparent 60%);
+}
+
+/* スクロールバー */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+/* 星空背景 */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+/* 魔法陣 */
+.magic-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border: 1px solid rgba(189, 147, 249, 0.2);
+  border-radius: 50%;
+  animation: rotate 60s linear infinite;
+}
+
+.magic-circle::before,
+.magic-circle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 121, 198, 0.2);
+  border-radius: 50%;
+}
+
+.magic-circle::before {
+  width: 400px;
+  height: 400px;
+  animation: rotate 40s linear infinite reverse;
+}
+
+.magic-circle::after {
+  width: 200px;
+  height: 200px;
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* 浮遊効果 */
+.float-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* グロー効果 */
+.glow-effect {
+  filter: drop-shadow(0 0 8px rgba(189, 147, 249, 0.6));
+}
+
+/* 魔法テキスト */
+.magic-text {
+  background: linear-gradient(to right, #ff79c6, #bd93f9, #64ffda);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(189, 147, 249, 0.3);
+}
+
+/* 暗号テキスト */
+.cryptic-text {
+  font-family: 'Courier New', monospace;
+  color: var(--retro);
+  letter-spacing: 1px;
+}
+
+/* ナビゲーションリンク */
+.nav-link {
+  position: relative;
+  padding: 0.5rem 0;
+  transition: all 0.3s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* レトロボタン */
+.retro-button {
+  background: var(--primary-light);
+  border: 1px solid var(--retro);
+  color: var(--retro);
+  font-family: 'Courier New', monospace;
+  transition: all 0.3s;
+}
+
+.retro-button:hover {
+  background: var(--retro);
+  color: var(--primary-dark);
+}
+
+/* 魔法ボタン */
+.magic-button {
+  background: linear-gradient(45deg, #ff79c6, #bd93f9);
+  color: var(--text);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.magic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #bd93f9, #ff79c6);
+  z-index: -1;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+.magic-button:hover::before {
+  opacity: 1;
+}
+
+/* レトロターミナル */
+.retro-terminal {
+  background: var(--primary-light);
+  border: 1px solid var(--retro);
+  border-radius: 4px;
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  color: var(--text);
+}
+
+.retro-terminal .text-retro {
+  color: var(--retro);
+}
+
+.retro-terminal .text-magic {
+  color: var(--magic);
+}
+
+/* 魔法カード */
+.magic-card {
+  background: rgba(26, 26, 46, 0.7);
+  border: 1px solid rgba(189, 147, 249, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.magic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 121, 198, 0.1), rgba(189, 147, 249, 0.1));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.magic-card:hover {
+  border-color: rgba(189, 147, 249, 0.6);
+  box-shadow: 0 0 20px rgba(189, 147, 249, 0.2);
+}
+
+.magic-card:hover::before {
+  opacity: 1;
+}
+
+/* 新しいスタイル - より派手なデザイン */
+/* グリッチエフェクト */
+.glitch-text {
+  position: relative;
+  animation: glitch 3s infinite;
+  text-shadow:
+    2px 0 #ff79c6,
+    -2px 0 #64ffda;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* サイバーパンクグリッド */
+.cyberpunk-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 121, 198, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 121, 198, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* レトロCRT効果 */
+.crt-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* スキャンライン効果 */
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0.75;
+  animation: scanline 6s linear infinite;
+  z-index: 9;
+}
+
+@keyframes scanline {
+  0% {
+    top: 0%;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+
+/* ホログラム効果 */
+.hologram {
+  position: relative;
+  color: rgba(100, 255, 218, 0.8);
+  text-shadow:
+    0 0 5px rgba(100, 255, 218, 0.8),
+    0 0 10px rgba(100, 255, 218, 0.5),
+    0 0 15px rgba(100, 255, 218, 0.3);
+  animation: hologram 3s ease-in-out infinite;
+}
+
+@keyframes hologram {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* 魔法の粒子 */
+.magic-particles {
+  position: relative;
+}
+
+.magic-particles::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: particles 20s linear infinite;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+@keyframes particles {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100px 100px;
+  }
+}
+
+/* 古いコンピュータ画面 */
+.old-screen {
+  background: #001100;
+  color: #00ff00;
+  font-family: 'VT323', monospace;
+  text-shadow: 0 0 5px #00ff00;
+  padding: 20px;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px #00ff00, inset 0 0 10px #00ff00;
+}
+
+/* 魔法の円 */
+.magic-orb {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(189, 147, 249, 0.8) 0%, rgba(189, 147, 249, 0.2) 70%, transparent 100%);
+  box-shadow: 0 0 20px rgba(189, 147, 249, 0.6);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* 星座効果 */
+.constellation {
+  position: relative;
+}
+
+.constellation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle 1px, white 1px, transparent 0),
+    radial-gradient(circle 1px, white 1px, transparent 0),
+    radial-gradient(circle 1px, white 1px, transparent 0),
+    radial-gradient(circle 1px, white 1px, transparent 0),
+    radial-gradient(circle 1px, white 1px, transparent 0);
+  background-position:
+    10% 20%,
+    30% 40%,
+    50% 30%,
+    70% 50%,
+    90% 10%;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+
+/* 魔法の境界線 */
+.magic-border {
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #ff79c6, #bd93f9, #64ffda, #ff79c6) 1;
+  animation: border-animation 4s linear infinite;
+}
+
+@keyframes border-animation {
+  0% {
+    border-image-source: linear-gradient(45deg, #ff79c6, #bd93f9, #64ffda, #ff79c6);
+  }
+
+  25% {
+    border-image-source: linear-gradient(45deg, #bd93f9, #64ffda, #ff79c6, #bd93f9);
+  }
+
+  50% {
+    border-image-source: linear-gradient(45deg, #64ffda, #ff79c6, #bd93f9, #64ffda);
+  }
+
+  75% {
+    border-image-source: linear-gradient(45deg, #ff79c6, #bd93f9, #64ffda, #ff79c6);
+  }
+
+  100% {
+    border-image-source: linear-gradient(45deg, #bd93f9, #64ffda, #ff79c6, #bd93f9);
+  }
+}
+
+/* 3Dテキスト効果 */
+.text-3d {
+  color: #bd93f9;
+  text-shadow:
+    0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0, 0, 0, .1),
+    0 0 5px rgba(0, 0, 0, .1),
+    0 1px 3px rgba(0, 0, 0, .3),
+    0 3px 5px rgba(0, 0, 0, .2),
+    0 5px 10px rgba(0, 0, 0, .25),
+    0 10px 10px rgba(0, 0, 0, .2),
+    0 20px 20px rgba(0, 0, 0, .15);
+}
+
+/* 魔法の背景 */
+.magic-bg {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 121, 198, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 90% 30%, rgba(189, 147, 249, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 50% 80%, rgba(100, 255, 218, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 20% 70%, rgba(80, 250, 123, 0.2) 0%, transparent 30%);
+  animation: bg-shift 20s ease-in-out infinite alternate;
+}
+
+@keyframes bg-shift {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+
+  100% {
+    background-position: 10% 10%, 10% 10%, 10% 10%, 10% 10%;
+  }
+}
+
+/* 魔法の円形メニュー */
+.magic-circle-menu {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.magic-circle-menu-item {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 26, 46, 0.7);
+  border: 1px solid rgba(189, 147, 249, 0.3);
+  transition: all 0.3s;
+}
+
+.magic-circle-menu-item:hover {
+  transform: scale(1.2);
+  border-color: rgba(189, 147, 249, 0.8);
+  box-shadow: 0 0 20px rgba(189, 147, 249, 0.4);
+}
+
+/* 魔法のカーソル */
+.magic-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(189, 147, 249, 0.5);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+/* 魔法のスクロール効果 */
+.magic-scroll {
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.magic-scroll:hover {
+  transform: translateY(-10px);
+}
+
+/* 魔法のタイプライター効果 */
+.typewriter {
+  overflow: hidden;
+  border-right: 0.15em solid var(--accent);
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  animation:
+    typing 3.5s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+
+  to {
+    width: 100%
+  }
+}
+
+@keyframes blink-caret {
+
+  from,
+  to {
+    border-color: transparent
+  }
+
+  50% {
+    border-color: var(--accent)
+  }
+}
+
+/* 魔法のカード効果 - 強化版 */
+.magic-card-enhanced {
+  background: rgba(26, 26, 46, 0.7);
+  border: 1px solid rgba(189, 147, 249, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.magic-card-enhanced::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent,
+      rgba(255, 121, 198, 0.3),
+      rgba(189, 147, 249, 0.3),
+      rgba(100, 255, 218, 0.3),
+      transparent);
+  animation: rotate-bg 10s linear infinite;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.magic-card-enhanced:hover {
+  border-color: rgba(189, 147, 249, 0.6);
+  box-shadow: 0 0 30px rgba(189, 147, 249, 0.3);
+  transform: translateY(-5px) scale(1.02);
+}
+
+.magic-card-enhanced:hover::before {
+  opacity: 1;
+}
+
+@keyframes rotate-bg {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 魔法のボタン - 強化版 */
+.magic-button-enhanced {
+  background: linear-gradient(45deg, #ff79c6, #bd93f9);
+  color: var(--text);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  position: relative;
+  top: 40px;
+  overflow: hidden;
+  z-index: 1;
+  border: none;
+  box-shadow: 0 0 15px rgba(189, 147, 249, 0.4);
+  transition: all 0.3s;
+}
+
+.magic-button-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #bd93f9, #ff79c6);
+  z-index: -1;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+.magic-button-enhanced::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 70%);
+  transform: rotate(0deg);
+  transition: all 0.5s;
+  opacity: 0;
+  z-index: -1;
+}
+
+.magic-button-enhanced:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(189, 147, 249, 0.6);
+}
+
+.magic-button-enhanced:hover::before {
+  opacity: 1;
+}
+
+.magic-button-enhanced:hover::after {
+  opacity: 0.5;
+  transform: rotate(45deg);
+}
+
+.magic-button-enhanced:active {
+  transform: translateY(1px);
+}
+
+/* 魔法のテキスト - 強化版 */
+.magic-text-enhanced {
+  background: linear-gradient(to right, #ff79c6, #bd93f9, #64ffda, #ff79c6);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 15px rgba(189, 147, 249, 0.4);
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* レトロターミナル - 強化版 */
+.retro-terminal-enhanced {
+  background: rgba(26, 26, 46, 0.9);
+  border: 2px solid var(--retro);
+  border-radius: 4px;
+  padding: 1.5rem;
+  font-family: 'VT323', monospace;
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+}
+
+.retro-terminal-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.retro-terminal-enhanced .terminal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--retro);
+}
+
+.retro-terminal-enhanced .terminal-title {
+  color: var(--retro);
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.retro-terminal-enhanced .terminal-content {
+  position: relative;
+}
+
+.retro-terminal-enhanced .terminal-line {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.retro-terminal-enhanced .terminal-prompt {
+  color: var(--retro);
+  margin-right: 0.5rem;
+}
+
+.retro-terminal-enhanced .terminal-cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  background-color: var(--retro);
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* 魔法の背景 - 強化版 */
+.magic-bg-enhanced {
+  position: relative;
+  overflow: hidden;
+}
+
+.magic-bg-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 121, 198, 0.3) 0%, transparent 30%),
+    radial-gradient(circle at 90% 30%, rgba(189, 147, 249, 0.3) 0%, transparent 30%),
+    radial-gradient(circle at 50% 80%, rgba(100, 255, 218, 0.3) 0%, transparent 30%),
+    radial-gradient(circle at 20% 70%, rgba(80, 250, 123, 0.3) 0%, transparent 30%);
+  filter: blur(20px);
+  z-index: -1;
+  animation: bg-pulse 15s ease-in-out infinite alternate;
+}
+
+@keyframes bg-pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* 魔法の区切り線 */
+.magic-divider {
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+  margin: 2rem 0;
+  position: relative;
+}
+
+.magic-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* 魔法のナビゲーション - 強化版 */
+.magic-nav {
+  position: relative;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.magic-nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 121, 198, 0.2), rgba(189, 147, 249, 0.2));
+  z-index: -1;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+.magic-nav:hover::before,
+.magic-nav.active::before {
+  transform: translateY(0);
+}
+
+.magic-nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), var(--magic));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s;
+}
+
+.magic-nav:hover::after,
+.magic-nav.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* 魔法のアイコン */
+.magic-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(26, 26, 46, 0.7);
+  border: 1px solid rgba(189, 147, 249, 0.3);
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.magic-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(189, 147, 249, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.magic-icon:hover {
+  transform: rotate(15deg);
+  border-color: rgba(189, 147, 249, 0.8);
+  box-shadow: 0 0 15px rgba(189, 147, 249, 0.4);
+}
+
+.magic-icon:hover::before {
+  opacity: 1;
+}
+
+/* 魔法のフォーム要素 */
+.magic-input {
+  background: rgba(26, 26, 46, 0.7);
+  border: 1px solid rgba(189, 147, 249, 0.3);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  transition: all 0.3s;
+}
+
+.magic-input:focus {
+  outline: none;
+  border-color: rgba(189, 147, 249, 0.8);
+  box-shadow: 0 0 10px rgba(189, 147, 249, 0.3);
+}
+
+.magic-input::placeholder {
+  color: rgba(248, 248, 242, 0.5);
+}
+
+/* 魔法のローディング */
+.magic-loading {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.magic-loading div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.magic-loading div:nth-child(1) {
+  left: 8px;
+  animation: magic-loading1 0.6s infinite;
+}
+
+.magic-loading div:nth-child(2) {
+  left: 8px;
+  animation: magic-loading2 0.6s infinite;
+}
+
+.magic-loading div:nth-child(3) {
+  left: 32px;
+  animation: magic-loading2 0.6s infinite;
+}
+
+.magic-loading div:nth-child(4) {
+  left: 56px;
+  animation: magic-loading3 0.6s infinite;
+}
+
+@keyframes magic-loading1 {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes magic-loading2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+@keyframes magic-loading3 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+/* 魔法のトグル */
+.magic-toggle {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.magic-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.magic-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(26, 26, 46, 0.7);
+  border: 1px solid rgba(189, 147, 249, 0.3);
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.magic-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 3px;
+  background-color: var(--text);
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.magic-toggle input:checked+.magic-toggle-slider {
+  background-color: rgba(189, 147, 249, 0.5);
+  border-color: rgba(189, 147, 249, 0.8);
+}
+
+.magic-toggle input:checked+.magic-toggle-slider:before {
+  transform: translateX(26px);
+  background-color: var(--accent);
+}
+
+/* 魔法のツールチップ */
+.magic-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.magic-tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background: rgba(26, 26, 46, 0.9);
+  border: 1px solid rgba(189, 147, 249, 0.5);
+  color: var(--text);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.magic-tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(189, 147, 249, 0.5) transparent transparent transparent;
+}
+
+.magic-tooltip:hover .magic-tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
