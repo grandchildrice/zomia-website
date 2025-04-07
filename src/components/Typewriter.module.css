@@ -17,13 +17,8 @@
     line-height: 1.5;
 }
 
-.char {
-    visibility: hidden;
-    position: relative;
-}
-
-.typed {
-    visibility: visible;
+.text {
+    display: inline;
 }
 
 .cursor {
