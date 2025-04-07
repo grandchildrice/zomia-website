@@ -1,0 +1,21 @@
+{
+    "siteTitle": "ZOMIA - Post-modern Cryptography Institute",
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "news": "News",
+        "research": "Research",
+        "business": "Business",
+        "community": "Community",
+        "contact": "Contact"
+    },
+    "footer": {
+        "copyright": "© 2025 ZOMIA. All rights reserved.",
+        "privacyPolicy": "Privacy Policy",
+        "termsOfService": "Terms of Service"
+    },
+    "languageSwitcher": {
+        "ja": "日本語",
+        "en": "English"
+    }
+}

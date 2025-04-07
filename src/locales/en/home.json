@@ -1,0 +1,59 @@
+{
+    "hero": {
+        "title": "Post-modern Cryptography Institute \"ZOMIA\"",
+        "subtitle": "Any sufficiently advanced cryptography is indistinguishable from magic",
+        "cta": "Learn More"
+    },
+    "intro": {
+        "title": "About ZOMIA",
+        "description": "ZOMIA is advancing research and development in next-generation cryptographic technologies, which we position as \"Post-modern Cryptography,\" including quantum-resistant cryptography for the quantum computing era, the fusion of biometric authentication and cryptography, secure computation technologies, and verifiable computation including zero-knowledge proofs."
+    },
+    "research": {
+        "title": "Research Themes",
+        "description": "Research on Post-modern Cryptography",
+        "areas": [
+            {
+                "title": "Biometric Cryptography",
+                "description": "Utilizing human-specific information such as fingerprints and brain signatures as keys to clearly distinguish between AI and humans"
+            },
+            {
+                "title": "Post-Quantum Cryptography",
+                "description": "New-generation security based on the premise of quantum computer development to replace existing cryptographic methods such as RSA and elliptic curve cryptography"
+            },
+            {
+                "title": "Secure Computation",
+                "description": "Performing calculations while maintaining confidential data of individuals and companies, completely protecting privacy even under large-scale surveillance by drones, satellites, and AI"
+            },
+            {
+                "title": "Verifiable Computation",
+                "description": "Safely collaborating with untrusted third parties by proving validity without revealing data content using methods such as zero-knowledge proofs"
+            }
+        ]
+    },
+    "activities": {
+        "title": "Activities",
+        "items": [
+            {
+                "title": "Research",
+                "description": "Collaborate on research on cryptography through grants from PSEs, blockchain companies, etc."
+            },
+            {
+                "title": "Business",
+                "description": "Red Team exercises and security diagnostics for companies using automated security agents."
+            },
+            {
+                "title": "Community",
+                "description": "Management of Zero Knowledge Proofing Communities such as ZK Tokyo and Core Program."
+            }
+        ]
+    },
+    "news": {
+        "title": "Latest News",
+        "viewAll": "View All"
+    },
+    "contact": {
+        "title": "Contact Us",
+        "description": "For inquiries about research collaboration, business, community activities, etc., please feel free to contact us.",
+        "button": "Go to Contact Page"
+    }
+}

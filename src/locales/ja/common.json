@@ -1,0 +1,21 @@
+{
+    "siteTitle": "ZOMIA - 近未来暗号研究所",
+    "nav": {
+        "home": "ホーム",
+        "about": "私たちについて",
+        "news": "ニュース",
+        "research": "研究",
+        "business": "ビジネス",
+        "community": "コミュニティ",
+        "contact": "お問い合わせ"
+    },
+    "footer": {
+        "copyright": "© 2025 ZOMIA. All rights reserved.",
+        "privacyPolicy": "プライバシーポリシー",
+        "termsOfService": "利用規約"
+    },
+    "languageSwitcher": {
+        "ja": "日本語",
+        "en": "English"
+    }
+}

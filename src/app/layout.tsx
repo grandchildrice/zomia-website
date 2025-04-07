@@ -58,7 +58,12 @@ export default function RootLayout({
 }) {
   // ヘッダーからロケール情報を取得
   const headersList = headers();
+
+  // x-localeヘッダーまたはURLクエリパラメータからロケールを取得
   const localeFromHeader = headersList.get('x-locale') as Locale | null;
+
+  // Next.jsのサーバーコンポーネントでクエリパラメータにアクセスする方法
+  // middlewareで処理し、必要に応じてヘッダーに変換している
   const locale = localeFromHeader || 'ja';
   const lang = locale === 'ja' ? 'ja' : 'en';
 

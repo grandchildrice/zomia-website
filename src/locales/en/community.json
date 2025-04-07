@@ -1,0 +1,71 @@
+{
+    "title": "Community",
+    "subtitle": "Management of Zero Knowledge Proofing Communities",
+    "managedCommunities": "Managed Communities",
+    "upcomingEvents": "Upcoming Events",
+    "communityResources": "Community Resources",
+    "joinCommunity": "Join Our Community",
+    "joinDescription": "If you are interested in ZK Tokyo or Core Program, please feel free to contact us. We conduct various activities, from introductory events for beginners to research meetings for experts.",
+    "contactPageLink": "Go to Contact Page",
+    "communities": [
+        {
+            "id": "zktokyo",
+            "title": "ZK Tokyo",
+            "description": "A Tokyo-based community specializing in zero-knowledge proof technology. We host regular meetups, workshops, and hackathons, contributing to the popularization and development of zero-knowledge proof technology. We provide a space for participants of various levels, from beginners to experts, to interact."
+        },
+        {
+            "id": "coreprogram",
+            "title": "Core Program",
+            "description": "An educational program designed to nurture the next generation of cryptography researchers. Targeting university students and young engineers, we provide opportunities to systematically learn from the basics of cryptographic theory to the latest applications. Through practical projects, participants can hone their skills from both theoretical and implementation perspectives."
+        }
+    ],
+    "events": [
+        {
+            "id": "event1",
+            "title": "ZK Tokyo Meetup Vol.10",
+            "date": "2025-05-15",
+            "location": "Shibuya, Tokyo",
+            "description": "Discussion on the latest research trends and implementation cases of zero-knowledge proofs. Guest speaker presentations and Q&A sessions are planned."
+        },
+        {
+            "id": "event2",
+            "title": "Core Program 2025 Summer Course",
+            "date": "2025-07-10 - 2025-07-31",
+            "location": "Online",
+            "description": "Learn cryptographic theory and implementation in a 3-week intensive course. A hackathon-style project presentation will be held in the final week."
+        },
+        {
+            "id": "event3",
+            "title": "ZK Hackathon 2025",
+            "date": "2025-09-20 - 2025-09-22",
+            "location": "Chiyoda, Tokyo",
+            "description": "A hackathon to develop innovative projects utilizing zero-knowledge proof technology in 48 hours. Research grants will be provided to the winning team."
+        }
+    ],
+    "resources": [
+        {
+            "id": "resource1",
+            "title": "Introduction to Zero-Knowledge Proofs Guide",
+            "type": "PDF Document",
+            "description": "An introductory guide for beginners explaining the basic concepts of zero-knowledge proofs to application examples."
+        },
+        {
+            "id": "resource2",
+            "title": "ZK Implementation Workshop Materials",
+            "type": "GitHub Repository",
+            "description": "A repository containing code samples and tutorials for learning how to implement zero-knowledge proofs."
+        },
+        {
+            "id": "resource3",
+            "title": "Cryptographic Theory Lecture Series",
+            "type": "Video Content",
+            "description": "A series of lecture videos on cryptographic theory used in the Core Program. Learn systematically from basics to applications."
+        }
+    ],
+    "viewAllResources": "View All Resources",
+    "joinMessages": {
+        "slack": "Join Community Slack",
+        "event": "Register for next event",
+        "newsletter": "Subscribe to newsletter"
+    }
+}

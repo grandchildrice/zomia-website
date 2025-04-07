@@ -1,0 +1,35 @@
+{
+    "title": "Research",
+    "subtitle": "Research on Post-modern Cryptography",
+    "introTitle": "What is Post-modern Cryptography",
+    "introText": [
+        "Looking back at the history of cryptography, it can be broadly divided into \"classical cryptography\" and \"modern cryptography.\"",
+        "\"Classical cryptography,\" as represented by Caesar cipher, Scytale cipher, Germany's Enigma during World War II, and the former Japanese military's Type 97 printing machine, is a method of concealing the \"algorithm itself.\"",
+        "\"Modern cryptography,\" such as AES, RSA encryption, and elliptic curve cryptography, is a method established through the development of computer technology that keeps the \"key\" secret while making the encryption algorithm public. Most of today's internet security is based on this modern cryptography.",
+        "However, modern cryptography still has several challenges. The most prominent example is the complexity of key management.",
+        "Therefore, we propose \"Post-modern Cryptography\" as a new concept that \"realizes security by integrating not only the form of keys but also the nature of computation itself and human existence (biometric information).\"",
+        "Post-modern Cryptography, as a higher concept of modern cryptography, further expands the framework of \"keeping keys secret\" to incorporate mechanisms where humans themselves function as keys and calculation algorithms premised on privacy protection. This aims to achieve quantum resistance and verifiable calculation procedures, with the potential to fundamentally transform the concept of \"key management\" itself."
+    ],
+    "researchAreas": [
+        {
+            "id": "biometric",
+            "title": "Biometric Cryptography",
+            "description": "To clearly distinguish between AI and humans, we utilize human-specific information such as fingerprints and brain signatures as keys, strengthening protection against impersonation and bots.\n\nWhile biometric information presents challenges as it cannot be easily changed once leaked, we research methods to generate keys safely from biometric features without storing the actual biometric data. We are also developing technologies to detect AI mimicry of biometric information.\n\nMain research themes:\n• Secure key generation from biometric information\n• Authentication systems resistant to biometric information leakage\n• Cryptographic methods to distinguish between AI and humans\n• Authentication using physiological features such as brain waves and heartbeats"
+        },
+        {
+            "id": "quantum",
+            "title": "Post-Quantum Cryptography",
+            "description": "Based on the premise of quantum computer development, we aim for new-generation security to replace existing cryptographic methods such as RSA and elliptic curve cryptography.\n\nAs quantum computers become increasingly practical, as seen with Google's Willow quantum chip, many modern cryptographic systems may be vulnerable to quantum algorithms. We are advancing research and implementation of cryptographic methods considered difficult to decrypt even with quantum computers, including lattice-based, code-based, multivariate polynomial-based, and hash-based approaches.\n\nMain research themes:\n• Efficient implementation of lattice-based cryptography\n• Development of quantum-resistant signature schemes\n• Security enhancement through combined use with quantum key distribution\n• Gradual introduction methods of quantum-resistant cryptography into existing systems"
+        },
+        {
+            "id": "mpc",
+            "title": "Secure Computation",
+            "description": "Even under large-scale surveillance by drones, satellites, and AI, secure computation technologies allow calculations while maintaining confidential data of individuals and companies, completely protecting privacy.\n\nSecure computation technologies include multi-party computation (MPC) where multiple parties perform joint calculations without revealing data to each other, fully homomorphic encryption (FHE) that can process data while it remains encrypted, and obfuscation techniques (iO) that allow only specific functions to be executed. These technologies enable AI learning and analysis, confidential data sharing between companies, and more while maintaining data privacy.\n\nMain research themes:\n• Development of efficient multi-party computation protocols\n• Acceleration towards practical implementation of fully homomorphic encryption\n• Privacy-preserving data mining\n• Industrial applications of secure computation technologies (medical, financial, supply chain, etc.)"
+        },
+        {
+            "id": "zk",
+            "title": "Verifiable Computation",
+            "description": "Using methods such as zero-knowledge proofs, we safely collaborate with untrusted third parties by proving validity without revealing data content.\n\nVerifiable computation technology makes it possible to protect privacy while proving computational accuracy. Zero-knowledge proofs (ZKP) in particular are expected to have innovative applications in areas such as improving blockchain scalability, privacy protection, and identity verification.\n\nMain research themes:\n• Efficient zero-knowledge proof systems such as zkSNARKs and zkSTARKs\n• Development of zero-knowledge virtual machines (zkVM)\n• Balancing privacy protection and verifiability in blockchains\n• Application of zero-knowledge proofs in decentralized identity"
+        }
+    ]
+}

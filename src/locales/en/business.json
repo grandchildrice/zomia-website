@@ -1,0 +1,48 @@
+{
+    "title": "Business",
+    "subtitle": "Services utilizing automated security agents",
+    "servicesTitle": "Services",
+    "caseStudiesTitle": "Case Studies",
+    "contactTitle": "Contact Us",
+    "contactDescription": "For questions about our services or to request a quote, please contact us via the contact form.",
+    "contactButton": "Go to Contact Page",
+    "services": [
+        {
+            "id": "redteam",
+            "title": "Red Team Exercises",
+            "description": "Our team of experts and automated AI security agents conduct security assessments of your systems using the same approach as actual attackers. This allows us to discover practical vulnerabilities, not just theoretical ones, and propose countermeasures.\n\nWe have particular strengths in evaluating advanced cryptographic technologies, including cryptographic implementation vulnerabilities, side-channel attack possibilities, and future threats from quantum computers."
+        },
+        {
+            "id": "security",
+            "title": "Security Diagnostics",
+            "description": "We analyze your system and application cryptographic implementations in detail and evaluate their compliance with industry standards and best practices. We also assess resistance to future threats (such as quantum computers).\n\nBased on diagnostic results, we propose specific improvement measures and implementation methods, and provide implementation support as needed. We also offer consulting on the introduction of the latest cryptographic technologies, such as zero-knowledge proofs and secure computation."
+        },
+        {
+            "id": "custom",
+            "title": "Custom Cryptographic Solutions",
+            "description": "We design and implement cryptographic solutions tailored to your specific needs. We address various applications including privacy protection, data security, and authentication systems.\n\nWe have particular expertise in the following areas:\n• Privacy-preserving authentication systems using zero-knowledge proofs\n• Data sharing solutions between multiple organizations utilizing secure computation technologies\n• Long-term data protection systems using quantum-resistant cryptography\n• Anti-impersonation systems combining biometric authentication and cryptographic technology"
+        }
+    ],
+    "caseStudies": [
+        {
+            "id": "case1",
+            "title": "Quantum-Resistant Cryptography Implementation for Major Financial Institution",
+            "description": "Gradually implemented quantum-resistant cryptography to protect confidential data requiring long-term storage. Built a security system prepared for future quantum computer threats while maintaining compatibility with current systems."
+        },
+        {
+            "id": "case2",
+            "title": "Zero-Knowledge Proof Implementation for Blockchain Company",
+            "description": "Designed and implemented an efficient zero-knowledge proof system to achieve both privacy protection and verifiability. Successfully maintained blockchain transparency while protecting user privacy by proving transaction validity without revealing details."
+        },
+        {
+            "id": "case3",
+            "title": "Secure Computation Platform for Medical Research Institution",
+            "description": "Developed a secure computation platform for multiple medical institutions to conduct joint research without sharing patient data. Enabled statistical analysis and machine learning model building while protecting each institution's data privacy."
+        }
+    ],
+    "terminal": {
+        "securityRequest": "Request for security diagnostics",
+        "redteamRequest": "Consultation for red team exercises",
+        "customRequest": "Development of custom solutions"
+    }
+}

@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Locale } from '../types';
-import { getLocalizedPathname } from '../lib/utils';
+import { Locale } from '@/types';
 
 interface NavbarProps {
   locale: Locale;
@@ -30,8 +29,19 @@ const Navbar = ({ locale }: NavbarProps) => {
   // 言語切替
   const toggleLocale = () => {
     const newLocale = locale === 'ja' ? 'en' : 'ja';
-    const currentPath = pathname || '/';
-    const newPath = getLocalizedPathname(currentPath, newLocale);
+
+    // Get the path without the locale prefix
+    let path = pathname || '/';
+    const segments = path.split('/');
+
+    // If the current path has a valid locale as the first segment, remove it
+    if (segments.length > 1 && ['ja', 'en'].includes(segments[1])) {
+      segments.splice(1, 1);
+      path = segments.join('/') || '/';
+    }
+
+    // Create the new path with the new locale
+    const newPath = `/${newLocale}${path}`;
     router.push(newPath);
   };
 
@@ -51,7 +61,7 @@ const Navbar = ({ locale }: NavbarProps) => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* ロゴ */}
-          <Link href={locale === 'ja' ? '/' : '/en'} className="flex items-center">
+          <Link href={`/${locale}`} className="flex items-center">
             <div className="relative w-10 h-10 mr-2 glow-effect">
               <Image
                 src="/images/zomia_logo.svg"
@@ -68,8 +78,8 @@ const Navbar = ({ locale }: NavbarProps) => {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                href={locale === 'ja' ? link.href : `/en${link.href}`}
-                className={`nav-link ${pathname === link.href || pathname === `/en${link.href}` ? 'active' : ''}`}
+                href={`/${locale}${link.href === '/' ? '' : link.href}`}
+                className={`nav-link ${pathname?.endsWith(link.href) ? 'active' : ''}`}
               >
                 {link.label}
               </Link>
@@ -103,8 +113,8 @@ const Navbar = ({ locale }: NavbarProps) => {
             {navLinks.map((link) => (
               <div key={link.href}>
                 <Link
-                  href={locale === 'ja' ? link.href : `/en${link.href}`}
-                  className={`block py-2 ${pathname === link.href || pathname === `/en${link.href}` ? 'text-accent' : 'hover:text-accent'}`}
+                  href={`/${locale}${link.href === '/' ? '' : link.href}`}
+                  className={`block py-2 ${pathname?.endsWith(link.href) ? 'text-accent' : 'hover:text-accent'}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <span className="text-retro">$</span> {link.label}

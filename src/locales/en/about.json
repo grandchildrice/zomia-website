@@ -1,0 +1,44 @@
+{
+    "title": "About Us",
+    "subtitle": "Philosophy and Members of Post-modern Cryptography Institute ZOMIA",
+    "missionTitle": "Mission",
+    "missionDescription": "ZOMIA is advancing research and development in next-generation cryptographic technologies, which we position as 'Post-modern Cryptography,' including quantum-resistant cryptography for the quantum computing era, the fusion of biometric authentication and cryptography, secure computation technologies, and verifiable computation including zero-knowledge proofs. In today's rapidly evolving technological society, protecting data privacy and securing communications are essential for safeguarding fundamental rights. We aim to achieve this mission through cutting-edge cryptographic technology.",
+    "visionTitle": "Vision",
+    "visionDescription": "ZOMIA envisions a future where cryptographic advancements enable all people to explore, interact, and create freely in the digital world while ensuring privacy and security. Our vision is for cryptographic technology to become seamlessly integrated into daily life and user-friendly for the general public. By establishing trust and safety in the digital realm, we contribute to the realization of a society that can maximize the benefits of technological advancement.",
+    "teamTitle": "Team",
+    "teamMembers": [
+        {
+            "name": "Takuzo Kanemasa",
+            "role": "Founder & Representative",
+            "bio": "While enrolled in the Graduate School of Informatics at Kyoto University, he studied attack techniques such as binary hacking. After working on a distributed ID infrastructure project, he encountered zero-knowledge proofs and is currently researching and developing 'Post-modern Cryptography,' the next generation of cryptographic technology. He completed his master's degree in informatics at Kyoto University.",
+            "areas": [
+                "Zero-Knowledge Proofs",
+                "Cryptographic Theory",
+                "Cybersecurity"
+            ]
+        },
+        {
+            "name": "Team Member B",
+            "role": "Cryptography Researcher",
+            "bio": "Specializing in advanced quantum-resistant cryptography research, they have published multiple papers on security in the quantum computing era. Previously worked as a security architect at a major security company.",
+            "areas": [
+                "Post-Quantum Cryptography",
+                "Lattice-based Cryptography",
+                "Multivariate Public-Key Cryptography"
+            ]
+        },
+        {
+            "name": "Team Member C",
+            "role": "Biometric Cryptography Engineer",
+            "bio": "Conducts research on the fusion of biometric authentication technology and cryptography, developing new authentication methods using human-specific biometric information. Has received multiple awards at international biometrics conferences.",
+            "areas": [
+                "Biometric Authentication",
+                "Biometric Cryptography",
+                "Pattern Recognition"
+            ]
+        }
+    ],
+    "joinUsTitle": "Work With Us",
+    "joinUsDescription": "ZOMIA is always looking for talented individuals passionate about cryptography and security. We collaborate with researchers, engineers, cryptographic mathematicians, and professionals from various specialized fields to develop next-generation cryptographic technologies. If you're interested, please feel free to contact us.",
+    "contactButton": "Contact Us"
+}
