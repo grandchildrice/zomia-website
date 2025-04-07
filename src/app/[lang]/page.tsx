@@ -7,6 +7,7 @@ import CommunitySVG from '@/components/CommunitySVG';
 import News from '@/components/News';
 import { Locale, Params, Dictionary } from '@/types';
 import { getDictionary } from '@/lib/i18n-utils';
+import AnimatedZomiaLogo from '@/components/LogoSVG';
 
 // Metadata generation
 export async function generateMetadata({ params: { lang } }: { params: Params }) {
@@ -77,13 +78,10 @@ export default async function HomePage({ params: { lang } }: { params: Params })
 
                 <div className="container mx-auto px-4 text-center">
                     <div className="mb-6">
-                        <Image
-                            src="/images/zomia_logo.svg"
-                            alt="ZOMIA"
-                            width={180}
-                            height={180}
-                            className="mx-auto float-element glow-effect"
-                        />
+                        <div className="mx-auto" style={{ width: 180, height: 180 }}>
+                            <AnimatedZomiaLogo />
+                        </div>
+
                     </div>
 
                     <h1 className="text-4xl md:text-6xl font-display mb-6 magic-text-enhanced glitch-text">
