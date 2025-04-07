@@ -47,6 +47,7 @@ npm run dev
 ```
 NOTION_API_KEY=your_notion_api_key
 NOTION_DATABASE_ID=your_notion_database_id
+WEBSITE_URL=http://localhost:3000
 ```
 
 ## プロジェクト構造

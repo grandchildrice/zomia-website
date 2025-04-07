@@ -1,87 +1,90 @@
 import { MetadataRoute } from 'next';
 
+// サイトURLを環境変数から取得
+const WEBSITE_URL = process.env.WEBSITE_URL || 'http://localhost:3000';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://zomia.org',
+      url: WEBSITE_URL,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: 'https://zomia.org/about',
+      url: `${WEBSITE_URL}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://zomia.org/news',
+      url: `${WEBSITE_URL}/news`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://zomia.org/research',
+      url: `${WEBSITE_URL}/research`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://zomia.org/business',
+      url: `${WEBSITE_URL}/business`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://zomia.org/community',
+      url: `${WEBSITE_URL}/community`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://zomia.org/contact',
+      url: `${WEBSITE_URL}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://zomia.org/en',
+      url: `${WEBSITE_URL}/en`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: 'https://zomia.org/en/about',
+      url: `${WEBSITE_URL}/en/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: 'https://zomia.org/en/news',
+      url: `${WEBSITE_URL}/en/news`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
-      url: 'https://zomia.org/en/research',
+      url: `${WEBSITE_URL}/en/research`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: 'https://zomia.org/en/business',
+      url: `${WEBSITE_URL}/en/business`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: 'https://zomia.org/en/community',
+      url: `${WEBSITE_URL}/en/community`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: 'https://zomia.org/en/contact',
+      url: `${WEBSITE_URL}/en/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,

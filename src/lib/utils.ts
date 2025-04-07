@@ -1,15 +1,11 @@
 export function getLocalizedPathname(pathname: string, locale: string): string {
-  // ルートパスの場合
-  if (pathname === '/' || pathname === '/en') {
-    return locale === 'ja' ? '/' : '/en';
-  }
+  // 現在のパスから言語プレフィックスを取り除く
+  const path = pathname.replace(/^\/en(\/|$)/, '/');
 
-  // 英語パスの場合（/en/about など）
-  if (pathname.startsWith('/en/')) {
-    const path = pathname.replace('/en', '');
-    return locale === 'ja' ? path : pathname;
+  // 新しいロケールに基づいてパスを作成
+  if (locale === 'ja') {
+    return path;
+  } else {
+    return `/en${path}`;
   }
-
-  // 日本語パスの場合（/about など）
-  return locale === 'ja' ? pathname : `/en${pathname}`;
 }

@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Locale } from '../types';
+import { useLocale } from '@/lib/localeContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import ResearchSVG from '@/components/ResearchSVG';
@@ -17,7 +18,7 @@ interface HomePageProps {
 }
 
 export default function HomePage({ params }: HomePageProps) {
-  const locale = "ja";
+  const { locale } = useLocale();
 
   // 星空背景のアニメーション効果
   useEffect(() => {

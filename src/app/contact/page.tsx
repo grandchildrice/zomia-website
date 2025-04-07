@@ -1,9 +1,6 @@
 'use client';
-
-import { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Locale } from '../../types';
-import { useNotionAPI } from '@/lib/notionAPI';
 
 interface PageProps {
   params: {
@@ -17,63 +14,6 @@ export default function ContactPage({ params }: PageProps) {
   const subtitle = locale === 'ja'
     ? 'ZOMIAへのお問い合わせはこちらから'
     : 'Contact ZOMIA here';
-
-  const { submitContactForm } = useNotionAPI();
-
-  // フォーム状態管理
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const [formStatus, setFormStatus] = useState({
-    submitting: false,
-    success: false,
-    error: false
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormStatus({ submitting: true, success: false, error: false });
-
-    try {
-      const success = await submitContactForm(formData, locale);
-
-      if (success) {
-        setFormStatus({ submitting: false, success: true, error: false });
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else {
-        setFormStatus({ submitting: false, success: false, error: true });
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setFormStatus({ submitting: false, success: false, error: true });
-    }
-  };
-
-  // お問い合わせカテゴリ
-  const contactCategories = locale === 'ja'
-    ? [
-      { value: '', label: 'カテゴリを選択してください' },
-      { value: 'research', label: '研究に関するお問い合わせ' },
-      { value: 'business', label: 'ビジネスに関するお問い合わせ' },
-      { value: 'community', label: 'コミュニティに関するお問い合わせ' },
-      { value: 'other', label: 'その他' }
-    ]
-    : [
-      { value: '', label: 'Select a category' },
-      { value: 'research', label: 'Research Inquiry' },
-      { value: 'business', label: 'Business Inquiry' },
-      { value: 'community', label: 'Community Inquiry' },
-      { value: 'other', label: 'Other' }
-    ];
 
   return (
     <PageLayout locale={locale}>
@@ -110,119 +50,7 @@ export default function ContactPage({ params }: PageProps) {
                   : '※ This form is encrypted. Your information will be securely protected.'}
               </div>
 
-              <iframe src="https://grandchildrice.notion.site/ebd/1ced05af0d5a809eafdaee923bf2ecaa" width="100%" height="600" frameborder="0" allowfullscreen />
-              {/* {formStatus.success ? (
-                <div className="text-center py-8">
-                  <div className="text-accent text-4xl mb-4">✓</div>
-                  <h3 className="text-xl font-medium mb-4">
-                    {locale === 'ja' ? 'お問い合わせを受け付けました' : 'Your inquiry has been received'}
-                  </h3>
-                  <p className="opacity-80 mb-6">
-                    {locale === 'ja'
-                      ? 'お問い合わせありがとうございます。内容を確認の上、担当者より折り返しご連絡いたします。'
-                      : 'Thank you for your inquiry. We will review your message and get back to you soon.'}
-                  </p>
-                  <button
-                    onClick={() => setFormStatus({ submitting: false, success: false, error: false })}
-                    className="magic-button"
-                  >
-                    {locale === 'ja' ? '新しいお問い合わせ' : 'New Inquiry'}
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {formStatus.error && (
-                    <div className="bg-red-900/30 border border-red-500/50 text-red-200 px-4 py-3 rounded-md mb-6">
-                      <p>
-                        {locale === 'ja'
-                          ? 'エラーが発生しました。しばらく経ってからもう一度お試しください。'
-                          : 'An error occurred. Please try again later.'}
-                      </p>
-                    </div>
-                  )}
-
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      {locale === 'ja' ? 'お名前' : 'Name'}
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 bg-primary-light border border-accent/30 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                      disabled={formStatus.submitting}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      {locale === 'ja' ? 'メールアドレス' : 'Email'}
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 bg-primary-light border border-accent/30 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                      disabled={formStatus.submitting}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                      {locale === 'ja' ? 'お問い合わせカテゴリ' : 'Inquiry Category'}
-                    </label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 bg-primary-light border border-accent/30 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                      disabled={formStatus.submitting}
-                    >
-                      {contactCategories.map((category) => (
-                        <option key={category.value} value={category.value}>
-                          {category.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      {locale === 'ja' ? 'お問い合わせ内容' : 'Message'}
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-2 bg-primary-light border border-accent/30 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                      disabled={formStatus.submitting}
-                    ></textarea>
-                  </div>
-
-                  <div className="text-center">
-                    <button
-                      type="submit"
-                      className="magic-button"
-                      disabled={formStatus.submitting}
-                    >
-                      {formStatus.submitting
-                        ? (locale === 'ja' ? '送信中...' : 'Submitting...')
-                        : (locale === 'ja' ? '送信する' : 'Submit')}
-                    </button>
-                  </div>
-                </form>
-              )} */}
+              <iframe src="https://grandchildrice.notion.site/ebd/1ced05af0d5a809eafdaee923bf2ecaa" width="100%" height="600" frameBorder="0" allowFullScreen />
 
               <div className="mt-8 text-center text-sm opacity-70">
                 <p>
