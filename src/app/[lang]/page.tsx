@@ -77,11 +77,8 @@ export default async function HomePage({ params: { lang } }: { params: Params })
                 </div>
 
                 <div className="container mx-auto px-4 text-center">
-                    <div className="mb-6">
-                        <div className="mx-auto" style={{ width: 180, height: 180 }}>
-                            <AnimatedZomiaLogo />
-                        </div>
-
+                    <div className="mx-auto" style={{ width: 180, height: 180 }}>
+                        <AnimatedZomiaLogo />
                     </div>
 
                     <h1 className="text-4xl md:text-6xl font-display mb-6 magic-text-enhanced glitch-text">

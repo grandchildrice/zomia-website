@@ -52,7 +52,7 @@ const AnimatedZomiaLogo = () => {
     };
 
     return (
-        <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+        <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-full">
             {/* ロゴの背景エフェクト - マジカルな光の粒子 */}
             <div className="absolute w-full h-full">
                 {Array.from({ length: 40 }).map((_, i) => (
@@ -311,37 +311,6 @@ const AnimatedZomiaLogo = () => {
                     );
                 })}
             </svg>
-
-            {/* CSS アニメーション */}
-            <style jsx>{`
-        @keyframes floatMain {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-
-        @keyframes float1 {
-          0%, 100% { transform: translate(0, 0); }
-          25% { transform: translate(5px, 10px); }
-          50% { transform: translate(10px, 5px); }
-          75% { transform: translate(5px, 15px); }
-        }
-
-        @keyframes float2 {
-          0%, 100% { transform: translate(0, 0); }
-          33% { transform: translate(-10px, 5px); }
-          66% { transform: translate(-5px, -10px); }
-        }
-
-        @keyframes float3 {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(8px, -8px); }
-        }
-
-        @keyframes glow {
-          0%, 100% { opacity: 0.1; }
-          50% { opacity: 0.7; }
-        }
-      `}</style>
         </div>
     );
 };
