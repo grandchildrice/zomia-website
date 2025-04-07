@@ -61,7 +61,7 @@ export default async function CommunityPage({ params: { lang } }: { params: Para
             </section>
 
             {/* イベントセクション */}
-            <section className="py-16 bg-primary-light/50">
+            {/* <section className="py-16 bg-primary-light/50">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-display text-center mb-12 magic-text">
                         {t.upcomingEvents}
@@ -84,10 +84,10 @@ export default async function CommunityPage({ params: { lang } }: { params: Para
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* リソースセクション */}
-            <section className="py-16">
+            {/* <section className="py-16">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-display text-center mb-12 magic-text">
                         {t.communityResources}
@@ -109,10 +109,10 @@ export default async function CommunityPage({ params: { lang } }: { params: Para
                         </a>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* 参加方法セクション */}
-            <section className="py-16 bg-primary-dark/70">
+            {/* <section className="py-16 bg-primary-dark/70">
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="text-3xl font-display mb-8 magic-text">
                         {t.joinCommunity}
@@ -139,7 +139,7 @@ export default async function CommunityPage({ params: { lang } }: { params: Para
                         {t.contactPageLink}
                     </Link>
                 </div>
-            </section>
+            </section> */}
         </PageLayout>
     );
 }

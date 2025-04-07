@@ -168,7 +168,7 @@ export default async function HomePage({ params: { lang } }: { params: Params })
                         {t.activities.items.map((item: any, index: number) => (
                             <div key={index} className="magic-card-enhanced h-full">
                                 <div className="flex justify-center mb-6">
-                                    <div className="w-48 h-48 glow-effect">
+                                    <div className="w-48 h-48 glow-effect opacity-40">
                                         {index === 0 && <ResearchSVG />}
                                         {index === 1 && <BusinessSVG />}
                                         {index === 2 && <CommunitySVG />}

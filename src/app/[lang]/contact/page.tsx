@@ -43,21 +43,8 @@ export default async function ContactPage({ params: { lang } }: { params: Params
                                 {t.formIntro}
                             </p>
 
-                            <div className="cryptic-text text-center mb-8">
-                                {lang === 'ja'
-                                    ? '※ このフォームは暗号化されています。情報は安全に保護されます。'
-                                    : '※ This form is encrypted. Your information will be securely protected.'}
-                            </div>
-
                             <iframe src="https://grandchildrice.notion.site/ebd/1ced05af0d5a809eafdaee923bf2ecaa" width="100%" height="600" frameBorder="0" allowFullScreen />
 
-                            <div className="mt-8 text-center text-sm opacity-70">
-                                <p>
-                                    {lang === 'ja'
-                                        ? '※ このフォームはNotionと連携しています。送信された情報はNotionデータベースに保存されます。'
-                                        : '※ This form is integrated with Notion. Submitted information will be stored in a Notion database.'}
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
