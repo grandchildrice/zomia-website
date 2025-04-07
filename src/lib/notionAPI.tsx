@@ -2,16 +2,30 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { Locale } from '../types';
-import { Client } from '@notionhq/client';
 
 export interface NewsItem {
   id: string;
   title: string;
-  category: string;
   date: string;
-  topic: string;
   excerpt?: string;
+  category?: string;
+  topic?: string;
   content?: string;
+  images?: NotionImage[];
+  links?: NotionLink[];
+}
+
+export interface NotionImage {
+  url: string;
+  caption?: string;
+  position: number;
+}
+
+export interface NotionLink {
+  text: string;
+  url: string;
+  position: number;
+  length: number;
 }
 
 type NotionAPIContextType = {

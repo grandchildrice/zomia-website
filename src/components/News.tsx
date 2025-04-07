@@ -4,21 +4,13 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useNotionAPI } from '@/lib/notionAPI';
 import { Locale } from '../types';
+import { NewsItem } from '@/lib/notionAPI';
 
 interface NewsProps {
     locale: Locale;
     limit?: number;
     showHeader?: boolean;
     className?: string;
-}
-
-interface NewsItem {
-    id: string;
-    title: string;
-    date: string;
-    excerpt?: string;
-    category?: string;
-    topic?: string;
 }
 
 export default function News({
