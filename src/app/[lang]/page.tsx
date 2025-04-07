@@ -167,19 +167,22 @@ export default async function HomePage({ params: { lang } }: { params: Params })
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {t.activities.items.map((item: any, index: number) => (
                             <div key={index} className="magic-card-enhanced h-full">
-                                <div className="flex justify-center mb-6">
-                                    <div className="w-48 h-48 glow-effect opacity-40">
-                                        {index === 0 && <ResearchSVG />}
-                                        {index === 1 && <BusinessSVG />}
-                                        {index === 2 && <CommunitySVG />}
+                                <Link href={index === 0 ? `/${lang}/research` : index === 1 ? `/${lang}/business` : `/${lang}/community`}>
+
+                                    <div className="flex justify-center mb-6">
+                                        <div className="w-48 h-48 glow-effect opacity-40">
+                                            {index === 0 && <ResearchSVG />}
+                                            {index === 1 && <BusinessSVG />}
+                                            {index === 2 && <CommunitySVG />}
+                                        </div>
                                     </div>
-                                </div>
-                                <h3 className="text-2xl font-display text-center mb-4 text-accent hologram">
-                                    {item.title}
-                                </h3>
-                                <p className="opacity-80 text-center">
-                                    {item.description}
-                                </p>
+                                    <h3 className="text-2xl font-display text-center mb-4 text-accent hologram">
+                                        {item.title}
+                                    </h3>
+                                    <p className="opacity-80 text-center">
+                                        {item.description}
+                                    </p>
+                                </Link>
                             </div>
                         ))}
                     </div>
