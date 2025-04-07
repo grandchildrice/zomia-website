@@ -585,40 +585,6 @@ body {
   transform: translateY(-10px);
 }
 
-/* 魔法のタイプライター効果 */
-.typewriter {
-  overflow: hidden;
-  border-right: 0.15em solid var(--accent);
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: 0.15em;
-  animation:
-    typing 3.5s steps(40, end),
-    blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from {
-    width: 0
-  }
-
-  to {
-    width: 100%
-  }
-}
-
-@keyframes blink-caret {
-
-  from,
-  to {
-    border-color: transparent
-  }
-
-  50% {
-    border-color: var(--accent)
-  }
-}
-
 /* 魔法のカード効果 - 強化版 */
 .magic-card-enhanced {
   background: rgba(26, 26, 46, 0.7);

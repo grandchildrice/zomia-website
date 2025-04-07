@@ -4,31 +4,31 @@ export const sitemap = {
   ja: {
     home: {
       title: 'ホーム',
-      path: '/',
+      path: '/ja',
     },
     about: {
       title: '私たちについて',
-      path: '/about',
+      path: '/ja/about',
     },
     news: {
       title: 'ニュース',
-      path: '/news',
+      path: '/ja/news',
     },
     research: {
       title: '研究',
-      path: '/research',
+      path: '/ja/research',
     },
     business: {
       title: 'ビジネス',
-      path: '/business',
+      path: '/ja/business',
     },
     community: {
       title: 'コミュニティ',
-      path: '/community',
+      path: '/ja/community',
     },
     contact: {
       title: 'お問い合わせ',
-      path: '/contact',
+      path: '/ja/contact',
     },
   },
   en: {

@@ -1,0 +1,49 @@
+/* components/Typewriter.module.css */
+.typewriterContainer {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.typewriter {
+    display: inline-block;
+    white-space: pre-wrap;
+    /* 折り返しを許可するが、スペースを保持 */
+    overflow: visible;
+    width: 100%;
+    letter-spacing: 0.15em;
+    position: relative;
+    line-height: 1.5;
+}
+
+.char {
+    visibility: hidden;
+    position: relative;
+}
+
+.typed {
+    visibility: visible;
+}
+
+.cursor {
+    display: inline-block;
+    width: 0.15em;
+    height: 1.2em;
+    background-color: var(--accent-color, #0078d7);
+    margin-left: 1px;
+    vertical-align: text-top;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}

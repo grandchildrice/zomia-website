@@ -8,6 +8,7 @@ import News from '@/components/News';
 import { Locale, Params, Dictionary } from '@/types';
 import { getDictionary } from '@/lib/i18n-utils';
 import AnimatedZomiaLogo from '@/components/LogoSVG';
+import Typewriter from '@/components/Typewriter';
 
 // Metadata generation
 export async function generateMetadata({ params: { lang } }: { params: Params }) {
@@ -85,9 +86,12 @@ export default async function HomePage({ params: { lang } }: { params: Params })
                         {t.hero.title}
                     </h1>
 
-                    <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 opacity-80 typewriter hologram">
-                        {t.hero.subtitle}
-                    </p>
+                    <Typewriter
+                        text={t.hero.subtitle}
+                        typingSpeed={50}
+                        startDelay={500}
+                        className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 opacity-80 hologram"
+                    />
 
                     <Link
                         href={`/${lang}/about`}
