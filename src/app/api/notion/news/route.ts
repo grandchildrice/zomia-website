@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
         const databaseId = process.env.NOTION_DATABASE_ID;
 
         // Query the Notion database
-        const response = await notion.databases.query({
+        const notionResponse = await notion.databases.query({
             database_id: databaseId,
             filter: {
                 and: [
@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
         });
 
         // Transform the Notion response to our desired format
-        const news = response.results.map((page: any) => {
+        const news = notionResponse.results.map((page: any) => {
             const properties = page.properties;
 
             // Extract properties based on column names
@@ -60,7 +60,14 @@ export async function GET(request: NextRequest) {
             };
         });
 
-        return NextResponse.json({ news });
+        const response = NextResponse.json({ news });
+        
+        // Add caching headers for CDN
+        response.headers.set('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=3600');
+        response.headers.set('CDN-Cache-Control', 'public, s-maxage=1800');
+        response.headers.set('Vercel-CDN-Cache-Control', 'public, s-maxage=1800');
+        
+        return response;
     } catch (error) {
         console.error('Error fetching news from Notion:', error);
         return NextResponse.json(

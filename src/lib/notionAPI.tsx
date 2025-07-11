@@ -44,6 +44,37 @@ type NotionAPIContextType = {
 const NotionAPIContext = createContext<NotionAPIContextType | undefined>(undefined);
 
 export const NotionAPIProvider = ({ children }: { children: ReactNode }) => {
+  // Client-side cache for news data (only on client side)
+  const [newsCache, setNewsCache] = useState<Map<string, { data: any; timestamp: number }>>(new Map());
+  const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
+  // Check if we're on the client side
+  const isClient = typeof window !== 'undefined';
+
+  // Check if cached data is still valid
+  const isValidCache = (cacheKey: string): boolean => {
+    if (!isClient) return false;
+    const cached = newsCache.get(cacheKey);
+    if (!cached) return false;
+    return Date.now() - cached.timestamp < CACHE_DURATION;
+  };
+
+  // Get cached data if valid
+  const getCachedData = (cacheKey: string): any => {
+    if (!isClient) return null;
+    const cached = newsCache.get(cacheKey);
+    return cached ? cached.data : null;
+  };
+
+  // Set cache data
+  const setCachedData = (cacheKey: string, data: any): void => {
+    if (!isClient) return;
+    setNewsCache(prev => new Map(prev).set(cacheKey, {
+      data,
+      timestamp: Date.now()
+    }));
+  };
+
   // NotionのAPIクライアントを初期化する関数
   const getNotionClient = async () => {
     try {
@@ -60,6 +91,13 @@ export const NotionAPIProvider = ({ children }: { children: ReactNode }) => {
 
   // ニュース記事を取得する関数
   const fetchNews = async (locale: Locale): Promise<NewsItem[]> => {
+    const cacheKey = `news_${locale}`;
+    
+    // Check cache first
+    if (isValidCache(cacheKey)) {
+      return getCachedData(cacheKey);
+    }
+
     try {
       // 実際のNotionのAPIを呼び出す
       const response = await fetch(`/api/notion/news?locale=${locale}`);
@@ -67,6 +105,10 @@ export const NotionAPIProvider = ({ children }: { children: ReactNode }) => {
         throw new Error('Failed to fetch news from API');
       }
       const data = await response.json();
+      
+      // Cache the result
+      setCachedData(cacheKey, data.news);
+      
       return data.news;
     } catch (error) {
       console.error('Failed to fetch news:', error);
@@ -108,6 +150,13 @@ export const NotionAPIProvider = ({ children }: { children: ReactNode }) => {
 
   // 特定のニュース記事を取得する関数
   const fetchNewsById = async (id: string, locale: Locale): Promise<NewsItem | null> => {
+    const cacheKey = `news_${id}_${locale}`;
+    
+    // Check cache first
+    if (isValidCache(cacheKey)) {
+      return getCachedData(cacheKey);
+    }
+
     try {
       // 実際のNotionのAPIを呼び出す
       const response = await fetch(`/api/notion/news/${id}?locale=${locale}`);
@@ -115,6 +164,10 @@ export const NotionAPIProvider = ({ children }: { children: ReactNode }) => {
         throw new Error('Failed to fetch news by ID from API');
       }
       const data = await response.json();
+      
+      // Cache the result
+      setCachedData(cacheKey, data.news);
+      
       return data.news;
     } catch (error) {
       console.error('Failed to fetch news by ID:', error);
