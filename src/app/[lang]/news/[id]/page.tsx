@@ -52,8 +52,8 @@ export async function generateMetadata({ params: { lang, id } }: NewsDetailPageP
                 images: [
                     {
                         url: coverImage,
-                        width: 1200,
-                        height: 630,
+                        width: 1600,
+                        height: 900,
                         alt: news.title,
                     }
                 ],
@@ -67,7 +67,14 @@ export async function generateMetadata({ params: { lang, id } }: NewsDetailPageP
                 card: 'summary_large_image',
                 title: news.title,
                 description: firstSentence,
-                images: [coverImage],
+                images: [
+                    {
+                        url: coverImage,
+                        width: 1600,
+                        height: 900,
+                        alt: news.title,
+                    }
+                ],
             },
         };
     } catch (error) {
@@ -85,8 +92,8 @@ export async function generateMetadata({ params: { lang, id } }: NewsDetailPageP
                 images: [
                     {
                         url: `${process.env.WEBSITE_URL || 'http://localhost:3000'}/images/ogp.jpg`,
-                        width: 1200,
-                        height: 630,
+                        width: 1600,
+                        height: 900,
                         alt: dict.news.title,
                     }
                 ],
@@ -97,6 +104,14 @@ export async function generateMetadata({ params: { lang, id } }: NewsDetailPageP
                 card: 'summary_large_image',
                 title: dict.news.title,
                 description: dict.news.subtitle,
+                images: [
+                    {
+                        url: `${process.env.WEBSITE_URL || 'http://localhost:3000'}/images/ogp.jpg`,
+                        width: 1600,
+                        height: 900,
+                        alt: dict.news.title,
+                    }
+                ],
             },
         };
     }
