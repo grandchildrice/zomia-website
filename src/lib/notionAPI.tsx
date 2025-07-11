@@ -13,6 +13,7 @@ export interface NewsItem {
   content?: string;
   images?: NotionImage[];
   links?: NotionLink[];
+  embeds?: NotionEmbed[];
 }
 
 export interface NotionImage {
@@ -26,6 +27,12 @@ export interface NotionLink {
   url: string;
   position: number;
   length: number;
+}
+
+export interface NotionEmbed {
+  url: string;
+  type: string;
+  position: number;
 }
 
 type NotionAPIContextType = {
@@ -123,20 +130,34 @@ export const NotionAPIProvider = ({ children }: { children: ReactNode }) => {
             ? `
               近未来暗号研究所「ZOMIA」の設立を発表しました。
 
-              この度、近未来暗号の研究に特化した研究所 「ZOMIA」 を設立します。ZOMIAは、量子コンピュータの時代に向けた耐量子暗号、生体認証と暗号の融合、秘密計算技術、そしてゼロ知識証明を含む検証可能計算など、次世代の暗号技術を「近未来暗号（Post-modern Cryptography）」と位置づけ、研究開発を進めていきます。
+              この度、近未来暗号の研究に特化した研究所 **「ZOMIA」** を設立します。ZOMIAは、量子コンピュータの時代に向けた耐量子暗号、生体認証と暗号の融合、秘密計算技術、そしてゼロ知識証明を含む検証可能計算など、次世代の暗号技術を「近未来暗号（Post-modern Cryptography）」と位置づけ、研究開発を進めていきます。
 
               暗号輸出規制やスノーデン事件が教えてくれたのは、革新的な技術は登場とともに、それが悪用されるリスクにさらされるという点です。現在のAIブームの中でも同様の問題が再浮上しており、それを阻止する手段として、悪用自体を不可能にする暗号の力が再び注目される必要があります。
 
-              まさに暗号戦争IIへ突入しようとしているいま、サイファーパンクの精神を受け継ぎ、暗号技術の力で個人のプライバシーと自由を守るための研究と実践を行っていきます。
+              まさに**暗号戦争II**へ突入しようとしているいま、サイファーパンクの精神を受け継ぎ、暗号技術の力で個人のプライバシーと自由を守るための研究と実践を行っていきます。
+
+              主な研究分野：
+              - \`post-quantum cryptography\` - 量子コンピュータに対する耐性
+              - \`zero-knowledge proofs\` - プライバシー保護計算
+              - \`homomorphic encryption\` - 暗号化データの計算
+
+              例えば、\`AES-256\`のような従来の暗号化手法から、**格子暗号**や**多変数暗号**など、量子コンピュータに対して安全な暗号方式への移行が急務となっています。
             `
             : `
-              We are pleased to announce the establishment of the Post-modern Cryptography Institute "ZOMIA".
+              We are pleased to announce the establishment of the Post-modern Cryptography Institute **"ZOMIA"**.
 
               ZOMIA will focus on research and development of next-generation cryptographic technologies, which we position as "Post-modern Cryptography," including quantum-resistant cryptography for the quantum computing era, the fusion of biometric authentication and cryptography, secure computation technologies, and verifiable computation including zero-knowledge proofs.
 
               What export regulations on cryptography and the Snowden incident have taught us is that innovative technologies are exposed to the risk of being misused as soon as they appear. Similar issues are re-emerging in the current AI boom, and the power of cryptography to make misuse itself impossible needs to be highlighted again as a means to prevent this.
 
-              Now, as we are about to enter Crypto Wars II, we will inherit the cypherpunk spirit and conduct research and practice to protect individual privacy and freedom through the power of cryptographic technology.
+              Now, as we are about to enter **Crypto Wars II**, we will inherit the cypherpunk spirit and conduct research and practice to protect individual privacy and freedom through the power of cryptographic technology.
+
+              Main research areas:
+              - \`post-quantum cryptography\` - Resistance to quantum computers
+              - \`zero-knowledge proofs\` - Privacy-preserving computation
+              - \`homomorphic encryption\` - Computation on encrypted data
+
+              For example, we need to urgently transition from traditional encryption methods like \`AES-256\` to quantum-safe cryptographic schemes such as **lattice-based cryptography** and **multivariate cryptography**.
             `
         },
         '2': {

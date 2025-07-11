@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
     try {
-        const { searchParams } = new URL(request.url);
+        const searchParams = request.nextUrl.searchParams;
         const locale = searchParams.get('locale') || 'ja';
 
         if (!process.env.NOTION_API_KEY || !process.env.NOTION_DATABASE_ID) {

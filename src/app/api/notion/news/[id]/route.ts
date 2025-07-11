@@ -8,7 +8,7 @@ export async function GET(
 ) {
     try {
         const id = params.id;
-        const { searchParams } = new URL(request.url);
+        const searchParams = request.nextUrl.searchParams;
         const locale = searchParams.get('locale') || 'ja';
 
         if (!process.env.NOTION_API_KEY) {
@@ -40,7 +40,33 @@ export async function GET(
             let currentOffset = 0;
 
             richText.forEach(textItem => {
-                text += textItem.plain_text;
+                let itemText = textItem.plain_text;
+                
+                // Check if this text has code annotation
+                if (textItem.annotations && textItem.annotations.code) {
+                    // Wrap code text in backticks for markdown
+                    itemText = `\`${itemText}\``;
+                }
+                
+                // Check if this text has bold annotation
+                if (textItem.annotations && textItem.annotations.bold) {
+                    // Wrap bold text in double asterisks for markdown
+                    itemText = `**${itemText}**`;
+                }
+                
+                // Check if this text has italic annotation
+                if (textItem.annotations && textItem.annotations.italic) {
+                    // Wrap italic text in single asterisks for markdown
+                    itemText = `*${itemText}*`;
+                }
+                
+                // Check if this text has strikethrough annotation
+                if (textItem.annotations && textItem.annotations.strikethrough) {
+                    // Wrap strikethrough text in tildes for markdown
+                    itemText = `~~${itemText}~~`;
+                }
+                
+                text += itemText;
 
                 // If this text has a link, add it to the links array
                 if (textItem.href) {
@@ -48,11 +74,11 @@ export async function GET(
                         text: textItem.plain_text,
                         url: textItem.href,
                         position: startPosition + currentOffset,
-                        length: textItem.plain_text.length
+                        length: itemText.length  // Use itemText.length to account for markdown
                     });
                 }
 
-                currentOffset += textItem.plain_text.length;
+                currentOffset += itemText.length;
             });
 
             return text;
@@ -63,6 +89,11 @@ export async function GET(
         let currentPosition = 0;
         const images: { url: string; caption?: string; position: number }[] = [];
         const links: { text: string; url: string; position: number; length: number }[] = [];
+        const embeds: { url: string; type: string; position: number }[] = [];
+        
+        // Track previous block type to handle list grouping
+        let previousBlockType: string | null = null;
+        let listItemCounter = 1;
 
         for (const block of blocksResponse.results as BlockObjectResponse[]) {
             if (block.type === 'paragraph' && block.paragraph.rich_text.length > 0) {
@@ -89,11 +120,48 @@ export async function GET(
                 const itemText = processRichText(block.bulleted_list_item.rich_text, currentPosition + 2, links); // +2 for '- '
                 content += '- ' + itemText + '\n';
                 currentPosition += itemText.length + 3; // +3 for '- ' and '\n'
+                
+                // Check if next block is not a bulleted list item to add extra newline
+                const currentIndex = (blocksResponse.results as BlockObjectResponse[]).indexOf(block);
+                const nextBlock = (blocksResponse.results as BlockObjectResponse[])[currentIndex + 1];
+                if (!nextBlock || nextBlock.type !== 'bulleted_list_item') {
+                    content += '\n';
+                    currentPosition += 1;
+                }
             }
             else if (block.type === 'numbered_list_item' && block.numbered_list_item.rich_text.length > 0) {
-                const itemText = processRichText(block.numbered_list_item.rich_text, currentPosition + 3, links); // +3 for '1. '
-                content += '1. ' + itemText + '\n';
-                currentPosition += itemText.length + 4; // +4 for '1. ' and '\n'
+                // Reset counter if previous block wasn't numbered list
+                if (previousBlockType !== 'numbered_list_item') {
+                    listItemCounter = 1;
+                }
+                
+                const itemText = processRichText(block.numbered_list_item.rich_text, currentPosition + 3, links); // +3 for 'N. '
+                content += `${listItemCounter}. ` + itemText + '\n';
+                currentPosition += itemText.length + 4; // +4 for 'N. ' and '\n'
+                listItemCounter++;
+                
+                // Check if next block is not a numbered list item to add extra newline
+                const currentIndex = (blocksResponse.results as BlockObjectResponse[]).indexOf(block);
+                const nextBlock = (blocksResponse.results as BlockObjectResponse[])[currentIndex + 1];
+                if (!nextBlock || nextBlock.type !== 'numbered_list_item') {
+                    content += '\n';
+                    currentPosition += 1;
+                    listItemCounter = 1; // Reset counter
+                }
+            }
+            else if (block.type === 'code') {
+                const codeText = block.code.rich_text.map((t: any) => t.plain_text).join('');
+                const language = block.code.language || '';
+                // Create markdown code block without showing language info in the content
+                // But preserve language info in a data attribute or similar for syntax highlighting
+                const codeBlock = '```' + language + '\n' + codeText + '\n```\n\n';
+                content += codeBlock;
+                currentPosition += codeBlock.length;
+            }
+            else if (block.type === 'quote' && block.quote.rich_text.length > 0) {
+                const quoteText = processRichText(block.quote.rich_text, currentPosition + 2, links); // +2 for '> '
+                content += '> ' + quoteText + '\n\n';
+                currentPosition += quoteText.length + 4; // +4 for '> ' and '\n\n'
             }
             else if (block.type === 'image') {
                 let imageUrl = '';
@@ -117,6 +185,24 @@ export async function GET(
                     });
                 }
             }
+            else if (block.type === 'embed') {
+                const embedUrl = (block as any).embed.url;
+                if (embedUrl) {
+                    let embedType = 'other';
+                    if (embedUrl.includes('x.com') || embedUrl.includes('twitter.com')) {
+                        embedType = 'twitter';
+                    }
+                    
+                    embeds.push({
+                        url: embedUrl,
+                        type: embedType,
+                        position: currentPosition
+                    });
+                }
+            }
+            
+            // Update previous block type for the next iteration
+            previousBlockType = block.type;
         }
 
         const news = {
@@ -128,6 +214,7 @@ export async function GET(
             content,
             images: images.length > 0 ? images : undefined,
             links: links.length > 0 ? links : undefined,
+            embeds: embeds.length > 0 ? embeds : undefined,
         };
 
         return NextResponse.json({ news });
