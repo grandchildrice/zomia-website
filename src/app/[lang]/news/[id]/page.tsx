@@ -10,55 +10,8 @@ interface NewsDetailPageProps {
     };
 }
 
-// Enable ISR with 1 hour revalidation
-export const revalidate = 3600;
-
-// Pre-generate static params for popular news articles
-export async function generateStaticParams() {
-    // Skip static generation during development
-    if (process.env.NODE_ENV === 'development') {
-        return [];
-    }
-
-    try {
-        // Only generate static params during build
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.VERCEL_URL;
-        if (!baseUrl) {
-            console.warn('No base URL found, skipping static generation');
-            return [];
-        }
-
-        // Fetch recent news articles for both languages
-        const [jaNews, enNews] = await Promise.all([
-            fetch(`${baseUrl}/api/notion/news?locale=ja`),
-            fetch(`${baseUrl}/api/notion/news?locale=en`)
-        ]);
-
-        const jaData = await jaNews.json();
-        const enData = await enNews.json();
-
-        const params = [];
-        
-        // Add Japanese news articles
-        if (jaData.news && Array.isArray(jaData.news)) {
-            for (const article of jaData.news.slice(0, 10)) { // Pre-generate top 10
-                params.push({ lang: 'ja', id: article.id });
-            }
-        }
-
-        // Add English news articles
-        if (enData.news && Array.isArray(enData.news)) {
-            for (const article of enData.news.slice(0, 10)) { // Pre-generate top 10
-                params.push({ lang: 'en', id: article.id });
-            }
-        }
-
-        return params;
-    } catch (error) {
-        console.error('Error generating static params:', error);
-        return [];
-    }
-}
+// Remove ISR and static generation to avoid 500 errors
+// All pages will be rendered on-demand with client-side caching
 
 export async function generateMetadata({ params: { lang, id } }: NewsDetailPageProps) {
     const dict = await getDictionary(lang as Locale, ['common', 'news']);

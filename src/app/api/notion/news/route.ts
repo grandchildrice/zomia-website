@@ -60,14 +60,7 @@ export async function GET(request: NextRequest) {
             };
         });
 
-        const response = NextResponse.json({ news });
-        
-        // Add caching headers for CDN
-        response.headers.set('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=3600');
-        response.headers.set('CDN-Cache-Control', 'public, s-maxage=1800');
-        response.headers.set('Vercel-CDN-Cache-Control', 'public, s-maxage=1800');
-        
-        return response;
+        return NextResponse.json({ news });
     } catch (error) {
         console.error('Error fetching news from Notion:', error);
         return NextResponse.json(

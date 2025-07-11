@@ -217,14 +217,7 @@ export async function GET(
             embeds: embeds.length > 0 ? embeds : undefined,
         };
 
-        const response = NextResponse.json({ news });
-        
-        // Add caching headers for CDN
-        response.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
-        response.headers.set('CDN-Cache-Control', 'public, s-maxage=3600');
-        response.headers.set('Vercel-CDN-Cache-Control', 'public, s-maxage=3600');
-        
-        return response;
+        return NextResponse.json({ news });
     } catch (error) {
         console.error('Error fetching news by ID from Notion:', error);
         return NextResponse.json(
